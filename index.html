@@ -439,20 +439,41 @@
         <p>&copy; 2026 SCENT OF M Italy Coffee Shop. Бүх эрх хуулиар хамгаалагдсан.</p>
     </footer>
 
-    <!-- ТАБ СИСТЕМ JAVASCRIPT -->
+        <!-- ТАБ СИСТЕМ ШИНЭЧЛЭГДСЭН JAVASCRIPT -->
     <script>
         function openCategory(evt, categoryName) {
+            // 1. Бүх таб контентуудыг олоод бүгдийг нь бүрмөсөн нуух
             var tabcontent = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
                 tabcontent[i].classList.remove("active-content");
             }
+            
+            // 2. Идэвхтэй байгаа товчлууруудын "active" классыг устгах
             var tablinks = document.getElementsByClassName("tab-btn");
             for (var i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
-            document.getElementById(categoryName).classList.add("active-content");
+            
+            // 3. Зөвхөн дарсан табыг гаргаж ирж харуулах
+            var currentTab = document.getElementById(categoryName);
+            if (currentTab) {
+                currentTab.style.display = "block";
+                currentTab.classList.add("active-content");
+            }
+            
+            // 4. Дарсан товчлуурыг идэвхтэй болгож өнгийг нь өөрчлөх
             evt.currentTarget.classList.add("active");
         }
+
+        // Вэб хамгийн анх нээгдэхэд зөвхөн Coffee-г харуулаад бусдыг нь нуух тохиргоо
+        document.addEventListener("DOMContentLoaded", function() {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 1; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+        });
     </script>
+
 </body>
 </html>
