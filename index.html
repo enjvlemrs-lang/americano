@@ -183,6 +183,37 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 15px;
         }
+        /* Цэсний ерөнхий контейнер */
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Мөр бүрийн загвар */
+        .menu-item-row {
+            background: #fff;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--brand-blue);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            width: 100%;
+        }
+
+        /* ЭНЭ ХЭСЭГ ХАМГИЙН ЧУХАЛ: Бусад табуудыг анхнаас нь нуух тохиргоо */
+        .tab-content {
+            display: none !important; /* Бүх цэсийг эхлээд нууна */
+        }
+
+        /* Зөвхөн идэвхтэй табыг гаргаж ирэх */
+        .tab-content.active-content {
+            display: block !important; /* Дарсан табыг ил гаргана */
+        }
 
         .menu-item-row {
             background: #fff;
