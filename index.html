@@ -177,77 +177,45 @@
             box-shadow: 0 4px 10px rgba(30, 61, 123, 0.25);
         }
 
-        /* Картын контейнер */
+        /* Шинэ цэсний жагсаалтын загвар (Зураггүй) */
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
         }
 
-        .menu-card {
+        .menu-item-row {
             background: #fff;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            border: 1px solid #eef2f8;
-            transition: 0.3s;
+            padding: 15px 20px;
+            border-radius: 10px;
             display: flex;
-            flex-direction: column;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(30, 61, 123, 0.08);
-        }
-
-        .menu-img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-
-        .menu-info {
-            padding: 15px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            flex-grow: 1;
-        }
-
-        .menu-info h3 {
-            font-size: 15px;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            font-weight: 600;
-            min-height: 40px;
-            display: flex;
             align-items: center;
-            justify-content: center;
+            border-left: 4px solid var(--brand-blue);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: 0.2s;
         }
 
-        .price {
+        .menu-item-row:hover {
+            transform: translateX(4px);
+            background: #f8faff;
+        }
+
+        .menu-item-name {
             font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            padding-right: 10px;
+        }
+
+        .menu-item-price {
+            font-size: 14px;
             color: var(--brand-blue);
             font-weight: 700;
-            background-color: #f0f4fc;
-            padding: 5px 12px;
-            border-radius: 15px;
-            display: inline-block;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .active-content {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            white-space: nowrap;
+            background: #f0f4fc;
+            padding: 4px 10px;
+            border-radius: 6px;
         }
 
         /* Бусад хэсэг */
@@ -327,8 +295,7 @@
             <a href="#menu" class="btn">Цэс үзэх</a>
         </section>
     </main>
-
-    <!-- ПОС Таб цэс -->
+    <!-- ШИНЭЧЛЭГДСЭН ПОС ТАБ ЦЭС -->
     <section id="menu">
         <h2>Манай Цэс</h2>
         
@@ -338,190 +305,104 @@
             <button class="tab-btn" onclick="openCategory(event, 'ade-tab')">🥤 Ade & Drink Me</button>
             <button class="tab-btn" onclick="openCategory(event, 'hot-tab')">🔥 Hot Drink</button>
             <button class="tab-btn" onclick="openCategory(event, 'food-tab')">🍔 Food & Cake</button>
-            <button class="tab-btn" onclick="openCategory(event, 'bean-tab')">🛍️ Whole Bean & Ayga</button>
+            <button class="tab-btn" onclick="openCategory(event, 'bean-tab')">🛍️ Whole Bean & Cup</button>
         </div>
 
         <!-- 1. КОФЕ ХУУДАС -->
         <div id="coffee-tab" class="tab-content active-content">
             <div class="menu-container">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Caffe Americano</h3><div class="price">8,500 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1596078841242-12f73dc6ef65?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Caffe Mocha</h3><div class="price">11,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Caffe Espresso</h3><div class="price">6,000 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Cappuccino</h3><div class="price">9,500 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Caffe Latte</h3><div class="price">9,500 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Caffe Macchiato</h3><div class="price">7,500 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1577968897866-be560a3eb265?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Caramel Macchiato</h3><div class="price">11,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1608228079968-c76816086817?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Orange Espresso</h3><div class="price">11,500 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1545663627-dbf9f0612a58?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Flavored Latte (Cinnamon / Hazelnut / Caramel / Vanilla)</h3><div class="price">11,500 ₮</div></div>
-                </div>
+                <div class="menu-item-row"><div class="menu-item-name">Caffe Americano</div><div class="menu-item-price">8,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Caffe Espresso</div><div class="menu-item-price">6,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Cappuccino</div><div class="menu-item-price">9,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Caffe Latte</div><div class="menu-item-price">9,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Caffe Mocha</div><div class="menu-item-price">11,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Caffe Macchiato</div><div class="menu-item-price">7,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Caramel Macchiato</div><div class="menu-item-price">11,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Orange Espresso</div><div class="menu-item-price">11,500 ₮</div></div>
+                <!-- Латтены олон төрлүүд -->
+                <div class="menu-item-row"><div class="menu-item-name">Vanilla Latte</div><div class="menu-item-price">11,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Hazelnut Latte</div><div class="menu-item-price">11,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Caramel Latte</div><div class="menu-item-price">11,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Cinnamon Latte</div><div class="menu-item-price">11,500 ₮</div></div>
             </div>
         </div>
 
         <!-- 2. СМҮҮТИ & ЖҮҮС -->
         <div id="smoothie-tab" class="tab-content">
             <div class="menu-container">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Blueberry Smoothie</h3><div class="price">15,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Strawberry Smoothie</h3><div class="price">15,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1623065422902-30a2ad299bf4?q=400" class="menu-img">
-                    <div class="menu-info"><h3>Mango Smoothie</h3><div class="price">15,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1589733901241-5e514c36b617?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Kiwi Smoothie / Kiwi Max</h3><div class="price">15,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Oreo Smoothie</h3><div class="price">15,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Labubu Shake</h3><div class="price">12,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1610970881699-44a55b4cfd87?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Juice (ABC / Apple / Orange / Cleanse / Pineapple)</h3><div class="price">15,900 ₮</div></div>
-                </div>
+                <div class="menu-item-row"><div class="menu-item-name">Blueberry Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Strawberry Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Mango Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Kiwi Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Kiwi Max</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Oreo Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Labubu Shake</div><div class="menu-item-price">12,900 ₮</div></div>
+                <!-- Жүүсний төрлүүд -->
+                <div class="menu-item-row"><div class="menu-item-name">ABC Juice</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Apple Juice</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Orange Juice</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Cleanse Juice</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Pineapple Juice</div><div class="menu-item-price">15,900 ₮</div></div>
             </div>
         </div>
 
         <!-- 3. ADE & DRINK ME -->
         <div id="ade-tab" class="tab-content">
             <div class="menu-container">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Ade (Blue / Tropical Red / Orange / Raspberry)</h3><div class="price">10,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Drinkme Milky</h3><div class="price">12,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Drinkme Americano</h3><div class="price">11,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Drinkme Nitro</h3><div class="price">9,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Fruit Drink (Passion Fruit / Raspberry / Tropical Blu)</h3><div class="price">5,900 ₮</div></div>
-                </div>
+                <!-- Эйдүүдийг салгав -->
+                <div class="menu-item-row"><div class="menu-item-name">Blue Ade</div><div class="menu-item-price">10,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Orange Ade</div><div class="menu-item-price">10,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Raspberry Ade</div><div class="menu-item-price">10,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Tropical Red Ade</div><div class="menu-item-price">10,900 ₮</div></div>
+                
+                <div class="menu-item-row"><div class="menu-item-name">Drinkme Milky</div><div class="menu-item-price">12,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Drinkme Americano</div><div class="menu-item-price">11,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Drinkme Nitro</div><div class="menu-item-price">9,900 ₮</div></div>
+                
+                <div class="menu-item-row"><div class="menu-item-name">Passion Fruit Drink</div><div class="menu-item-price">5,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Raspberry Fruit Drink</div><div class="menu-item-price">5,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Tropical Blu Fruit Drink</div><div class="menu-item-price">5,900 ₮</div></div>
             </div>
         </div>
 
         <!-- 4. ХАЛУУН УУХ ЗҮЙЛС -->
         <div id="hot-tab" class="tab-content">
             <div class="menu-container">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Cinnamon, Orange, Lemon & Ginger</h3><div class="price">9,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Hot Chocolate</h3><div class="price">9,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1619846059632-15f91b7d598b?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Homemade Seabuckthorn</h3><div class="price">6,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Honey Milk</h3><div class="price">6,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Matcha Latte</h3><div class="price">11,500 ₮</div></div>
-                </div>
+                <div class="menu-item-row"><div class="menu-item-name">Cinnamon, Orange, Lemon & Ginger</div><div class="menu-item-price">9,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Hot Chocolate</div><div class="menu-item-price">9,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Homemade Seabuckthorn</div><div class="menu-item-price">6,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Honey Milk</div><div class="menu-item-price">6,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Matcha Latte</div><div class="menu-item-price">11,500 ₮</div></div>
             </div>
         </div>
 
         <!-- 5. ХООЛ & КЭЙК -->
         <div id="food-tab" class="tab-content">
             <div class="menu-container">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Tiramisu</h3><div class="price">55,000 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Lemon Moosecake</h3><div class="price">6,500 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Panini (Beef / Chicken / Pork)</h3><div class="price">17,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Pho (Beef / Chicken)</h3><div class="price">10,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>10 Tai Cake</h3><div class="price">85,000 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1511018556340-d16986a1c194?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Grek Yogurt / Owyostoi Tarag</h3><div class="price">6,900 ₮ / 12,900 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1495147478759-383567b44690?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Cookie / Butterfly / Cake</h3><div class="price">3,500 ₮ - 15,900 ₮</div></div>
-                </div>
+                <div class="menu-item-row"><div class="menu-item-name">Tiramisu</div><div class="menu-item-price">55,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Lemon Moosecake</div><div class="menu-item-price">6,500 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Beef Panini</div><div class="menu-item-price">17,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Chicken Panini</div><div class="menu-item-price">17,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Pork Panini</div><div class="menu-item-price">17,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Beef Pho</div><div class="menu-item-price">10,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Chicken Pho</div><div class="menu-item-price">10,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">10 Tai Cake</div><div class="menu-item-price">85,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Grek Yogurt</div><div class="menu-item-price">6,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Owyostoi Tarag</div><div class="menu-item-price">12,900 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Cookie / Butterfly / Cake</div><div class="menu-item-price">3,500 ₮ - 15,900 ₮</div></div>
             </div>
         </div>
 
         <!-- 6. БҮТЭН ҮР & АЯГА -->
         <div id="bean-tab" class="tab-content">
             <div class="menu-container">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Me'spresso Blend (250gr / 1000gr)</h3><div class="price">25,000 ₮ / 85,000 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Dark Blend (250gr / 1000gr)</h3><div class="price">25,000 ₮ / 85,000 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Har Coffee Instant / Instant 10</h3><div class="price">70,000 ₮ / 10,000 ₮</div></div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1517256064527-09c53b2d0c6b?q=80&w=400" class="menu-img">
-                    <div class="menu-info"><h3>Scent of M Брэндийн Аяга</h3><div class="price">30,000 ₮</div></div>
-                </div>
+                <div class="menu-item-row"><div class="menu-item-name">Me'spresso Blend (250gr)</div><div class="menu-item-price">25,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Me'spresso Blend (1000gr)</div><div class="menu-item-price">85,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Dark Blend (250gr)</div><div class="menu-item-price">25,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Dark Blend (1000gr)</div><div class="menu-item-price">85,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Har Coffee Instant</div><div class="menu-item-price">70,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Instant 10</div><div class="menu-item-price">10,000 ₮</div></div>
+                <div class="menu-item-row"><div class="menu-item-name">Scent of M Брэндийн Аяга</div><div class="menu-item-price">30,000 ₮</div></div>
             </div>
         </div>
     </section>
