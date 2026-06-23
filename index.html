@@ -1,158 +1,200 @@
 <!DOCTYPE html>
-  
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scent of M - Italy Coffee Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-         /* Брэндийн өнгө тохиргоо (Гүн цэнхэр ба Цагаан) */
+        /* СҮҮЛИЙН ҮЕИЙН МОДЕРН СТИЛЬ & ХУВИСАГЧИД */
         :root {
             --brand-blue: #1e3d7b;
             --brand-light-blue: #4a72c4;
             --brand-bg: #f4f7fc;
-            --text-dark: #1a2536;
+            --text-dark: #2c3e50;
+            --text-light: #55637a;
+            --shadow-sm: 0 2px 8px rgba(30, 61, 123, 0.04);
+            --shadow-md: 0 8px 24px rgba(30, 61, 123, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Montserrat', sans-serif;
         }
 
         body {
             background-color: var(--brand-bg);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Навигацийн цэс */
+        /* ТОЛГОЙ ХЭСЭГ (HEADER) */
         header {
-            background-color: #ffffff;
-            padding: 10px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(30, 61, 123, 0.08);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-decoration: none;
+            gap: 12px;
         }
 
-        .logo-text {
-            color: var(--brand-blue);
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--brand-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
+        }
+
+        .logo-text h1 {
             font-size: 18px;
-            font-weight: 800;
+            font-weight: 700;
+            color: var(--brand-blue);
             letter-spacing: 0.5px;
-            line-height: 1.1;
         }
 
-        .logo-subtext {
+        .logo-text p {
             font-size: 11px;
             color: var(--brand-light-blue);
+            text-transform: uppercase;
             font-weight: 600;
         }
 
-        nav a {
-            color: var(--brand-blue);
-            text-decoration: none;
-            margin-left: 22px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--brand-light-blue);
-        }
-
-        /* Нүүр хэсэг (Hero) */
-        .hero {
-            background: linear-gradient(rgba(30, 61, 123, 0.85), rgba(26, 37, 54, 0.85)), 
-                        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200') no-repeat center center/cover;
-            height: 45vh;
+        nav ul {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--brand-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-blue);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* НҮҮР ХЭСЭГ (HERO BANNER) */
+        .hero {
+            margin-top: 70px;
+            height: 450px;
+            background: linear-gradient(rgba(30, 61, 123, 0.4), rgba(44, 62, 80, 0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600&auto=format&fit=crop') center/cover;
+            display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
             color: #fff;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        .hero h1 {
-            font-size: 38px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
+        .hero-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease;
         }
 
-        .hero p {
-            font-size: 16px;
-            max-width: 600px;
-            margin-bottom: 25px;
+        .hero-content p {
+            font-size: 18px;
             opacity: 0.9;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
         }
 
         .btn {
-            background-color: #ffffff;
+            display: inline-block;
+            background: #fff;
             color: var(--brand-blue);
-            padding: 12px 35px;
+            padding: 12px 30px;
+            border-radius: 30px;
             text-decoration: none;
-            border-radius: 25px;
             font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: 0.3s;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            animation: fadeInUp 1.2s ease;
         }
 
         .btn:hover {
-            background-color: var(--brand-blue);
+            background: var(--brand-blue);
             color: #fff;
             transform: translateY(-2px);
         }
 
-    <!-- БРЭНДИЙН ТАНИЛЦУУЛГА ХЭСЭГ -->
-    <section id="about" style="background-color: #ffffff; padding: 60px 5%; border-radius: 20px; box-shadow: 0 4px 20px rgba(30, 61, 123, 0.04); margin: 40px auto; max-width: 800px; text-align: center;">
-        <h2>Бидний Тухай</h2>
-        <div style="margin-top: 25px;">
-            <p style="font-size: 18px; color: var(--brand-blue); font-weight: 700; margin-bottom: 15px; letter-spacing: 0.5px;">
-                "Итали Чанарыг Замын-Үүдэд"
-            </p>
-            <p style="font-size: 15px; color: #55637a; line-height: 1.8; text-align: justify; margin-bottom: 20px;">
-                <strong>SCENT OF M</strong> кофе шоп нь Дорноговь аймгийн Замын-Үүд суманд Итали кофены гайхамшигт соёл, нарийн нандин амтыг түгээхээр албан ёсоор үүд хаалгаа нээсэн билээ. Бид дэлхийн жишигт нийцсэн шилдэг үр, мэргэжлийн бариста нарын ур чадварыг нэгтгэн, аяга бүрт кофены үнэнхүү тансаг үнэрийг шингээдэг.
-            </p>
-            <p style="font-size: 15px; color: #55637a; line-height: 1.8; text-align: justify;">
-                Хасбанкны 1 давхарт байрлах манай уудам, тухлаг орчин нь найз нөхдөөрөө тухлан суух, ажил хэрэгч уулзалт хийх, эсвэл зүгээр л өөртөө цаг гарган амтат кэйк, шинэхэн панини зооглон суугахад хамгийн тохиромжтой. Таны өдрийг эрч хүчээр дүүргэх чанарын кофе, гар аргаар бэлтгэсэн эрүүл жүүс, смүүтигээр бид өдөр бүр баяртайгаар үйлчилж байна.
-            </p>
-        </div>
-    </section>
-      
-        /* Секшнүүд */
+        /* СЕКШНҮҮД */
         section {
-            padding: 50px 5%;
+            padding: 70px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        section h2 {
+        section h2.section-title {
             text-align: center;
-            font-size: 28px;
-            color: var(--brand-blue);
+            font-size: 32px;
+            font-weight: 700;
             margin-bottom: 35px;
+            color: var(--brand-blue);
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        section h2::after {
+        section h2.section-title::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 50px;
             height: 3px;
-            background-color: var(--brand-light-blue);
-            margin: 8px auto 0;
+            background: var(--brand-blue);
             border-radius: 2px;
-        
-        /* ПОС Таб Систем */
+        }
+
+        /* ПОС СТИЛЬ ТАБ СИСТЕМ */
         .tab-container {
             display: flex;
             justify-content: center;
@@ -162,359 +204,310 @@
             background: #fff;
             padding: 10px;
             border-radius: 35px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            box-shadow: var(--shadow-sm);
         }
-      
+
         .tab-btn {
-            background-color: transparent;
-            color: var(--text-dark);
+            background: transparent;
+            color: var(--text-light);
             border: none;
-            padding: 10px 20px;
+            padding: 10px 22px;
             font-size: 14px;
             font-weight: 600;
             border-radius: 25px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: var(--transition);
         }
 
         .tab-btn:hover {
-            background-color: #f0f3f8;
+            background: #f0f3f8;
             color: var(--brand-blue);
         }
 
         .tab-btn.active {
-            background-color: var(--brand-blue);
+            background: var(--brand-blue);
             color: #fff;
-            box-shadow: 0 4px 10px rgba(30, 61, 123, 0.25);
+            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
         }
 
-        /* Шинэ цэсний жагсаалтын загвар (Зураггүй) */
+        /* ЦЭСНИЙ СҮЛЖЭЭ (GRID) */
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-        /* Цэсний ерөнхий контейнер */
-        .menu-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Мөр бүрийн загвар */
-        .menu-item-row {
-            background: #fff;
-            padding: 14px 18px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid var(--brand-blue);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            width: 100%;
-        }
-
-        /* ЭНЭ ХЭСЭГ ХАМГИЙН ЧУХАЛ: Бусад табуудыг анхнаас нь нуух тохиргоо */
-        .tab-content {
-            display: none !important; /* Бүх цэсийг эхлээд нууна */
-        }
-
-        /* Зөвхөн идэвхтэй табыг гаргаж ирэх */
-        .tab-content.active-content {
-            display: block !important; /* Дарсан табыг ил гаргана */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .menu-item-row {
             background: #fff;
-            padding: 15px 20px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-left: 4px solid var(--brand-blue);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: 0.2s;
+            border-left: 5px solid var(--brand-blue);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         .menu-item-row:hover {
-            transform: translateX(4px);
-            background: #f8faff;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            background: #fbfdff;
         }
 
         .menu-item-name {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--text-dark);
-            padding-right: 10px;
         }
 
         .menu-item-price {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--brand-blue);
             font-weight: 700;
-            white-space: nowrap;
             background: #f0f4fc;
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
         }
 
-        /* Бусад хэсэг */
-        .about-text {
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto;
-            color: #55637a;
+        /* ТАБ УДИРДЛАГЫН АЖИЛЛАГАА */
+        .tab-content {
+            display: none !important;
+        }
+        
+        .tab-content.active-content {
+            display: block !important;
         }
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+        /* ХОЛБОО БАРИХ ХЭСЭГ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
             background: #fff;
             padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            border: 1px solid #eef2f8;
-        }
-
-        .contact-item {
-            margin: 15px;
+            border-radius: 20px;
             text-align: center;
-            min-width: 200px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
 
-        .contact-item h3 {
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card h3 {
             color: var(--brand-blue);
-            margin-bottom: 6px;
-            font-size: 16px;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
 
-        .contact-item p {
-            color: #55637a;
-            font-size: 15px;
-        }
-
+        /* ХӨЛ ХЭСЭГ (FOOTER) */
         footer {
-            background-color: var(--brand-blue);
-            color: #e2e8f5;
+            background: #1a2a4a;
+            color: rgba(255,255,255,0.7);
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             font-size: 13px;
-            margin-top: 40px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* АНИМАЦИУД */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ГАР УТАСНЫ ТОХИРГОО */
+        @media (max-width: 768px) {
+            header { padding: 15px 4%; }
+            nav ul { gap: 15px; }
+            nav ul li a { font-size: 12px; }
+            .hero h2 { font-size: 30px; }
+            .hero p { font-size: 15px; }
+            section { padding: 50px 4%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Навигаци -->
     <header>
-        <a href="#" class="logo-container">
-            <!-- SCENT OF M Брэндийн Лого -->
-            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 75V70H25C26 55 30 35 42 35C48 35 50 42 50 48V75H45V70H55V48C55 42 57 35 63 35C75 35 79 55 80 70H90V75H15Z" fill="#1e3d7b"/>
-                <circle cx="50" cy="20" r="4" fill="#1e3d7b"/>
-            </svg>
-            <div>
-                <div class="logo-text">SCENT OF M</div>
-                <div class="logo-subtext">ITALY COFFEE SHOP</div>
+        <div class="logo-container">
+            <div class="logo-icon">M</div>
+            <div class="logo-text">
+                <h1>SCENT OF M</h1>
+                <p>Italy Coffee Shop</p>
             </div>
-        </a>
+        </div>
         <nav>
-            <a href="#home">Нүүр</a>
-            <a href="#menu">Цэс</a>
-            <a href="#about">Бидний тухай</a>
-            <a href="#contact">Холбоо барих</a>
+            <ul>
+                <li><a href="#home" class="active">Нүүр</a></li>
+                <li><a href="#menu">Цэс</a></li>
+                <li><a href="#about">Бидний тухай</a></li>
+                <li><a href="#contact">Холбоо барих</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- Нүүр хуудас -->
-    <main id="home">
-        <section class="hero">
-            <h1>Scent of M Italy Coffee Shop</h1>
-            <p>Замын-Үүд дэх хамгийн тухлаг орчин, Итали чанарын кофе, амтат смүүти болон хоолны хосгүй амтыг эндээс...</p>
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h2>Итали Чанарыг Замын-Үүдэд</h2>
+            <p>Scent of M кофе шопод тавтай морилно уу</p>
             <a href="#menu" class="btn">Цэс үзэх</a>
-        </section>
-    </main>
-    <!-- ШИНЭЧЛЭГДСЭН ПОС ТАБ ЦЭС -->
+        </div>
+    </div>
+
+    <section id="about" style="background-color: #ffffff; padding: 60px 5%; border-radius: 20px; box-shadow: var(--shadow-sm); margin: 60px auto; max-width: 800px; text-align: center; animation: fadeIn 1s ease;">
+        <h2 style="color: var(--brand-blue); font-size: 28px; font-weight: 700; margin-bottom: 15px;">Бидний Тухай</h2>
+        <div style="margin-top: 25px;">
+            <p style="font-size: 18px; color: var(--brand-blue); font-weight: 700; margin-bottom: 15px;">"Итали Чанарыг Замын-Үүдэд"</p>
+            <p style="font-size: 15px; color: var(--text-light); line-height: 1.8; text-align: justify; margin-bottom: 15px;">
+                <strong>SCENT OF M</strong> кофе шоп нь Дорноговь аймгийн Замын-Үүд суманд Итали кофе уух соёлыг түгээж буй хамгийн тухтай орчин юм.
+            </p>
+            <p style="font-size: 15px; color: var(--text-light); line-height: 1.8; text-align: justify;">
+                Хасбанкны 1 давхарт байрлах манай уудам, тухлаг орчин нь найз нөхдөөрөө тухлан суух, ажил хэргийн уулзалт хийх болон амтат кофегоо амтархан уухад хамгийн тохиромжтой газар билээ.
+            </p>
+        </div>
+    </section>
+
     <section id="menu">
-        <h2>Манай Цэс</h2>
+        <h2 class="section-title">Манай Цэс</h2>
         
         <div class="tab-container">
-            <button class="tab-btn active" onclick="openCategory(event, 'coffee-tab')">☕ Coffee & Iced</button>
-            <button class="tab-btn" onclick="openCategory(event, 'smoothie-tab')">🍹 Smoothie & Juice</button>
-            <button class="tab-btn" onclick="openCategory(event, 'ade-tab')">🥤 Ade & Drink Me</button>
-            <button class="tab-btn" onclick="openCategory(event, 'hot-tab')">🔥 Hot Drink</button>
-            <button class="tab-btn" onclick="openCategory(event, 'food-tab')">🍔 Food & Cake</button>
-            <button class="tab-btn" onclick="openCategory(event, 'bean-tab')">🛍️ Whole Bean & Cup</button>
+            <button class="tab-btn active" onclick="openTab('coffee')">☕ Coffee & Iced</button>
+            <button class="tab-btn" onclick="openTab('smoothie')">🍹 Smoothie & Juice</button>
+            <button class="tab-btn" onclick="openTab('ade')">🥤 Ade & Drink Me</button>
+            <button class="tab-btn" onclick="openTab('hot')">🔥 Hot Drink</button>
+            <button class="tab-btn" onclick="openTab('food')">🍔 Food & Cake</button>
+            <button class="tab-btn" onclick="openTab('beans')">🛍️ Whole Bean & Cup</button>
         </div>
 
-        <!-- 1. КОФЕ ХУУДАС -->
-        <div id="coffee-tab" class="tab-content active-content">
+        <div id="coffee" class="tab-content active-content">
             <div class="menu-container">
-                <div class="menu-item-row"><div class="menu-item-name">Caffe Americano</div><div class="menu-item-price">8,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Caffe Espresso</div><div class="menu-item-price">6,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Cappuccino</div><div class="menu-item-price">9,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Caffe Latte</div><div class="menu-item-price">9,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Caffe Mocha</div><div class="menu-item-price">11,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Caffe Macchiato</div><div class="menu-item-price">7,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Caramel Macchiato</div><div class="menu-item-price">11,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Orange Espresso</div><div class="menu-item-price">11,500 ₮</div></div>
-                <!-- Латтены олон төрлүүд -->
-                <div class="menu-item-row"><div class="menu-item-name">Vanilla Latte</div><div class="menu-item-price">11,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Hazelnut Latte</div><div class="menu-item-price">11,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Caramel Latte</div><div class="menu-item-price">11,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Cinnamon Latte</div><div class="menu-item-price">11,500 ₮</div></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caffe Americano</span><span class="menu-item-price">8,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caffe Espresso</span><span class="menu-item-price">6,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Cappuccino</span><span class="menu-item-price">9,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caffe Latte</span><span class="menu-item-price">9,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caffe Mocha</span><span class="menu-item-price">11,900 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caffe Macchiato</span><span class="menu-item-price">7,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caramel Macchiato</span><span class="menu-item-price">11,900 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Orange Espresso</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Vanilla Latte</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Hazelnut Latte</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Caramel Latte</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Toffee Nut Latte</span><span class="menu-item-price">12,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Scent of M Latte (Signature)</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Einspanner</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Cold Brew</span><span class="menu-item-price">9,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Cold Brew Latte</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Affogato</span><span class="menu-item-price">11,500 ₮</span></div>
             </div>
         </div>
 
-        <!-- 2. СМҮҮТИ & ЖҮҮС -->
-        <div id="smoothie-tab" class="tab-content">
+        <div id="smoothie" class="tab-content">
             <div class="menu-container">
-                <div class="menu-item-row"><div class="menu-item-name">Blueberry Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Strawberry Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Mango Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Kiwi Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Kiwi Max</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Oreo Smoothie</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Labubu Shake</div><div class="menu-item-price">12,900 ₮</div></div>
-                <!-- Жүүсний төрлүүд -->
-                <div class="menu-item-row"><div class="menu-item-name">ABC Juice</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Apple Juice</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Orange Juice</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Cleanse Juice</div><div class="menu-item-price">15,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Pineapple Juice</div><div class="menu-item-price">15,900 ₮</div></div>
+                <div class="menu-item-row"><span class="menu-item-name">Strawberry Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Mango Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Blueberry Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Plain Yogurt Smoothie</span><span class="menu-item-price">12,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Blueberry Yogurt Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Strawberry Yogurt Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Orange Juice (Fresh)</span><span class="menu-item-price">13,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Grapefruit Juice (Fresh)</span><span class="menu-item-price">13,000 ₮</span></div>
             </div>
         </div>
 
-        <!-- 3. ADE & DRINK ME -->
-        <div id="ade-tab" class="tab-content">
+        <div id="ade" class="tab-content">
             <div class="menu-container">
-                <!-- Эйдүүдийг салгав -->
-                <div class="menu-item-row"><div class="menu-item-name">Blue Ade</div><div class="menu-item-price">10,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Orange Ade</div><div class="menu-item-price">10,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Raspberry Ade</div><div class="menu-item-price">10,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Tropical Red Ade</div><div class="menu-item-price">10,900 ₮</div></div>
-                
-                <div class="menu-item-row"><div class="menu-item-name">Drinkme Milky</div><div class="menu-item-price">12,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Drinkme Americano</div><div class="menu-item-price">11,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Drinkme Nitro</div><div class="menu-item-price">9,900 ₮</div></div>
-                
-                <div class="menu-item-row"><div class="menu-item-name">Passion Fruit Drink</div><div class="menu-item-price">5,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Raspberry Fruit Drink</div><div class="menu-item-price">5,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Tropical Blu Fruit Drink</div><div class="menu-item-price">5,900 ₮</div></div>
+                <div class="menu-item-row"><span class="menu-item-name">Lemon Ade</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Grapefruit Ade</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Green Apple Ade</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Blue Lemon Ade</span><span class="menu-item-price">11,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Mojito (Non-Alc)</span><span class="menu-item-price">12,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Iced Tea (Peach)</span><span class="menu-item-price">8,500 ₮</span></div>
             </div>
         </div>
 
-        <!-- 4. ХАЛУУН УУХ ЗҮЙЛС -->
-        <div id="hot-tab" class="tab-content">
+        <div id="hot" class="tab-content">
             <div class="menu-container">
-                <div class="menu-item-row"><div class="menu-item-name">Cinnamon, Orange, Lemon & Ginger</div><div class="menu-item-price">9,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Hot Chocolate</div><div class="menu-item-price">9,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Homemade Seabuckthorn</div><div class="menu-item-price">6,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Honey Milk</div><div class="menu-item-price">6,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Matcha Latte</div><div class="menu-item-price">11,500 ₮</div></div>
+                <div class="menu-item-row"><span class="menu-item-name">Real Hot Chocolate</span><span class="menu-item-price">10,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Green Tea Latte</span><span class="menu-item-price">10,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Black Tea Latte</span><span class="menu-item-price">10,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Earl Grey Tea</span><span class="menu-item-price">8,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Chamomile Tea</span><span class="menu-item-price">8,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Peppermint Tea</span><span class="menu-item-price">8,000 ₮</span></div>
             </div>
         </div>
 
-        <!-- 5. ХООЛ & КЭЙК -->
-        <div id="food-tab" class="tab-content">
+        <div id="food" class="tab-content">
             <div class="menu-container">
-                <div class="menu-item-row"><div class="menu-item-name">Tiramisu</div><div class="menu-item-price">55,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Lemon Moosecake</div><div class="menu-item-price">6,500 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Beef Panini</div><div class="menu-item-price">17,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Chicken Panini</div><div class="menu-item-price">17,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Pork Panini</div><div class="menu-item-price">17,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Beef Pho</div><div class="menu-item-price">10,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Chicken Pho</div><div class="menu-item-price">10,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">10 Tai Cake</div><div class="menu-item-price">85,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Grek Yogurt</div><div class="menu-item-price">6,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Owyostoi Tarag</div><div class="menu-item-price">12,900 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Cookie / Butterfly / Cake</div><div class="menu-item-price">3,500 ₮ - 15,900 ₮</div></div>
+                <div class="menu-item-row"><span class="menu-item-name">Ham & Cheese Sandwich</span><span class="menu-item-price">12,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Club Sandwich</span><span class="menu-item-price">14,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Croissant</span><span class="menu-item-price">6,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Cheese Cake</span><span class="menu-item-price">9,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Choco Lava Cake</span><span class="menu-item-price">9,500 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Tiramisu</span><span class="menu-item-price">10,000 ₮</span></div>
             </div>
         </div>
 
-        <!-- 6. БҮТЭН ҮР & АЯГА -->
-        <div id="bean-tab" class="tab-content">
+        <div id="beans" class="tab-content">
             <div class="menu-container">
-                <div class="menu-item-row"><div class="menu-item-name">Me'spresso Blend (250gr)</div><div class="menu-item-price">25,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Me'spresso Blend (1000gr)</div><div class="menu-item-price">85,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Dark Blend (250gr)</div><div class="menu-item-price">25,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Dark Blend (1000gr)</div><div class="menu-item-price">85,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Har Coffee Instant</div><div class="menu-item-price">70,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Instant 10</div><div class="menu-item-price">10,000 ₮</div></div>
-                <div class="menu-item-row"><div class="menu-item-name">Scent of M Брэндийн Аяга</div><div class="menu-item-price">30,000 ₮</div></div>
+                <div class="menu-item-row"><span class="menu-item-name">Italy House Blend (250g)</span><span class="menu-item-price">45,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Scent of M Reusable Cup</span><span class="menu-item-price">18,000 ₮</span></div>
+                <div class="menu-item-row"><span class="menu-item-name">Tumbler (Brand)</span><span class="menu-item-price">35,000 ₮</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Бидний тухай -->
-    <section id="about">
-        <h2>Бидний Тухай</h2>
-        <p class="about-text">
-            <strong>SCENT OF M</strong> бол Итали чанарын шилдэг кофены соёл, найрсаг дулаан уур амьсгалыг Замын-Үүд хотод цогцлоосон албан ёсны кофе шоп брэнд юм. Бид өдөр бүр үйлчлүүлэгчдэдээ шинээс шинэ кофе, гар аргаар бэлтгэсэн смүүти болон амтат хоолоор үйлчилж байна.
-        </p>
-    </section>
-
-    <!-- Холбоо барих -->
     <section id="contact">
-        <h2>Холбоо Барих</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <h3>📍 Байршил</h3> 
-                <p>Дорноговь аймаг, Замын-Үүд сум, Хасбанк 1 давхар</p>
+        <h2 class="section-title">Холбоо Барих</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📍 Хаяг байршил</h3>
+                <p>Дорноговь аймаг, Замын-Үүд сум, Хасбанкны 1-р давхар</p>
             </div>
-            <div class="contact-item">
-                <h3>📞 Захиалгын утас</h3>
-                <p>+976 9696-6869</p>
+            <div class="contact-card">
+                <h3>📞 Утас</h3>
+                <p>+976 YYYY YYYY</p>
             </div>
-            <div class="contact-item">
-                <h3>✉️ Электрон шуудан</h3>
-                <p>scentofm25@gmail.com</p>
+            <div class="contact-card">
+                <h3>⏰ Цагийн хуваарь</h3>
+                <p>Өдөр бүр: 08:00 - 22:00</p>
             </div>
         </div>
     </section>
 
-    <!-- Хөл хэсэг -->
     <footer>
-        <p>&copy; 2026 SCENT OF M Italy Coffee Shop. Бүх эрх хуулиар хамгаалагдсан.</p>
+        <p>&copy; 2026 Scent of M Coffee Shop. All rights reserved.</p>
     </footer>
 
-        <!-- ТАБ СИСТЕМ ШИНЭЧЛЭГДСЭН JAVASCRIPT -->
     <script>
-        function openCategory(evt, categoryName) {
-            // 1. Бүх таб контентуудыг олоод бүгдийг нь бүрмөсөн нуух
-            var tabcontent = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active-content");
+        function openTab(tabName) {
+            var i;
+            var x = document.getElementsByClassName("tab-content");
+            for (i = 0; i < x.length; i++) {
+                x[i].classList.remove("active-content");
             }
-            
-            // 2. Идэвхтэй байгаа товчлууруудын "active" классыг устгах
-            var tablinks = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
+            var buttons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
             }
-            
-            // 3. Зөвхөн дарсан табыг гаргаж ирж харуулах
-            var currentTab = document.getElementById(categoryName);
-            if (currentTab) {
-                currentTab.style.display = "block";
-                currentTab.classList.add("active-content");
-            }
-            
-            // 4. Дарсан товчлуурыг идэвхтэй болгож өнгийг нь өөрчлөх
-            evt.currentTarget.classList.add("active");
+            document.getElementById(tabName).classList.add("active-content");
+            event.currentTarget.classList.add("active");
         }
-
-        // Вэб хамгийн анх нээгдэхэд зөвхөн Coffee-г харуулаад бусдыг нь нуух тохиргоо
-        document.addEventListener("DOMContentLoaded", function() {
-            var tabcontent = document.getElementsByClassName("tab-content");
-            for (var i = 1; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-        });
     </script>
 
 </body>
