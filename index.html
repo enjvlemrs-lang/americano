@@ -2,610 +2,89 @@
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scent of M - Italy Coffee Shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Scent of M | Italy Coffee Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        :root {
-            --brand-blue: #1e3d7b;
-            --brand-light-blue: #4a72c4;
-            --brand-bg: #f4f7fc;
-            --text-dark: #2c3e50
-            --text-light: #55637a;
-            --shadow-sm: 0 2px 8px rgba(30, 61, 123, 0.04);
-            --shadow-md: 0 8px 24px rgba(30, 61, 123, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+        :root { --brand-blue: #1e3d7b; --brand-bg: #f4f7fc; }
+        body { background: var(--brand-bg); color: #2c3e50; font-family: 'Inter', sans-serif; margin: 0; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Montserrat', sans-serif;
-        }
+        /* Floating Steam */
+        .steam-container { position: relative; width: 100px; height: 100px; margin: 0 auto; }
+        .steam { position: absolute; background: rgba(255,255,255,0.4); width: 3px; height: 30px; border-radius: 50%; animation: rise 3s infinite linear; }
+        @keyframes rise { 0% { opacity: 0; transform: translateY(0); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(-60px); } }
 
-        body {
-            background-color: var(--brand-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--brand-blue);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
-        }
-
-        .logo-text h1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--brand-blue);
-            letter-spacing: 0.5px;
-        }
-
-        .logo-text p {
-            font-size: 11px;
-            color: var(--brand-light-blue);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--brand-blue);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--brand-blue);
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover::after, nav ul li a.active::after {
-            width: 100%;
-        }
-
-        .hero {
-            margin-top: 70px;
-            height: 450px;
-            background: linear-gradient(rgba(30, 61, 123, 0.4), rgba(44, 62, 80, 0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600&auto=format&fit=crop') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-
-        .hero-content h2 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            opacity: 0.9;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #fff;
-            color: var(--brand-blue);
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .btn:hover {
-            background: var(--brand-blue);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 70px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2.section-title {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 35px;
-            color: var(--brand-blue);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        section h2.section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--brand-blue);
-            border-radius: 2px;
-        }
-
-        .tab-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-            background: #fff;
-            padding: 10px;
-            border-radius: 35px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .tab-btn {
-            background: transparent;
-            color: var(--text-light);
-            border: none;
-            padding: 10px 22px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .tab-btn:hover {
-            background: #f0f3f8;
-            color: var(--brand-blue);
-        }
-
-        .tab-btn.active {
-            background: var(--brand-blue);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
-        }
-
-        .menu-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .menu-item-row {
-            background: #fff;
-            padding: 20px;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 5px solid var(--brand-blue);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .menu-item-row:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            background: #fbfdff;
-        }
-
-        .menu-item-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .menu-item-price {
-            font-size: 15px;
-            color: var(--brand-blue);
-            font-weight: 700;
-            background: #f0f4fc;
-            padding: 6px 14px;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
-
-        .tab-content {
-            display: none !important;
-        }
+        /* Hero */
+        .hero { height: 400px; background: var(--brand-blue); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; }
         
-        .tab-content.active-content {
-            display: block !important;
-        }
+        /* Wheel */
+        .wheel-section { max-width: 600px; margin: 40px auto; text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        #wheel { width: 220px; height: 220px; border: 10px solid var(--brand-blue); border-radius: 50%; margin: 20px auto; transition: 4s cubic-bezier(0.1, 0.8, 0.1, 1); cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .contact-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-card h3 {
-            color: var(--brand-blue);
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        footer {
-            background: #1a2a4a;
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 13px;
-            margin-top: 60px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            header { padding: 15px 4%; }
-            nav ul { gap: 15px; }
-            nav ul li a { font-size: 12px; }
-            .hero h2 { font-size: 30px; }
-            .hero p { font-size: 15px; }
-            section { padding: 50px 4%; }
-        }
+        /* Menu Tabs */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { padding: 10px 20px; cursor: pointer; border: none; background: #ddd; border-radius: 20px; }
+        .tab-btn.active { background: var(--brand-blue); color: white; }
+        .tab-content { display: none; }
+        .active-content { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 800px; margin: 0 auto; }
+        .item { background: white; padding: 15px; border-radius: 10px; border-left: 4px solid var(--brand-blue); display: flex; justify-content: space-between; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <div class="logo-icon">M</div>
-            <div class="logo-text">
-                <h1>SCENT OF M</h1>
-                <p>Italy Coffee Shop</p>
-            </div>
+    <div class="hero">
+        <div class="steam-container">
+            <div class="steam" style="left: 40%;"></div>
+            <div class="steam" style="left: 60%; animation-delay: 1.5s;"></div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home" class="active">Нүүр</a></li>
-                <li><a href="#lucky-wheel-section">Азын дугуй</a></li>
-                <li><a href="#coffee-quiz-section">Амтны тест</a></li>
-                <li><a href="#menu">Цэс</a></li>
-                <li><a href="#about">Бидний тухай</a></li>
-                <li><a href="#contact">Холбоо барих</a></li>
-            </ul>
-        </nav>
-    </header>
+        <h1>SCENT OF M</h1>
+    </div>
 
-    <div class="hero" id="home">
-        <div class="hero-content">
-            <h2>Итали Чанарыг Замын-Үүдэд</h2>
-            <p>Scent of M кофе шопод тавтай морилно уу</p>
-            <a href="#menu" class="btn">Цэс үзэх</a>
+    <section class="wheel-section" data-aos="fade-up">
+        <h2>Өдрийн азтай кофе</h2>
+        <div id="wheel" onclick="spin()">ЭРГҮҮЛ</div>
+        <h3 id="res"></h3>
+    </section>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('coffee')">Coffee</button>
+        <button class="tab-btn" onclick="showTab('food')">Food</button>
+    </div>
+
+    <div id="coffee" class="active-content">
+        <div class="item"><span>Americano</span><span>8,500 ₮</span></div>
+        <div class="item"><span>Latte</span><span>9,500 ₮</span></div>
+        <div class="item"><span>Cappuccino</span><span>9,500 ₮</span></div>
+        <div class="item"><span>Mocha</span><span>11,900 ₮</span></div>
+    </div>
+
+    <div id="food" class="tab-content">
+        <div class="active-content" style="display: grid;">
+            <div class="item"><span>Croissant</span><span>6,500 ₮</span></div>
+            <div class="item"><span>Tiramisu</span><span>10,000 ₮</span></div>
         </div>
     </div>
 
-    <section id="about" style="background-color: #ffffff; padding: 60px 5%; border-radius: 20px; box-shadow: var(--shadow-sm); margin: 60px auto; max-width: 800px; text-align: center; animation: fadeIn 1s ease;">
-        <h2 style="color: var(--brand-blue); font-size: 28px; font-weight: 700; margin-bottom: 15px;">Бидний Тухай</h2>
-        <div style="margin-top: 25px;">
-            <p style="font-size: 18px; color: var(--brand-blue); font-weight: 700; margin-bottom: 15px;">"Итали Чанарыг Замын-Үүдэд"</p>
-            <p style="font-size: 15px; color: var(--text-light); line-height: 1.8; text-align: justify; margin-bottom: 15px;">
-                <strong>SCENT OF M</strong> кофе шоп нь Дорноговь аймгийн Замын-Үүд суманд Итали кофе уух соёлыг түгээж буй хамгийн тухтай орчин юм.
-            </p>
-            <p style="font-size: 15px; color: var(--text-light); line-height: 1.8; text-align: justify;">
-                Хасбанкны 1 давхарт байрлах манай уудам, тухлаг орчин нь найз нөхдөөрөө тухлан суух, ажил хэргийн уулзалт хийх болон амтат кофегоо амтархан уухад хамгийн тохиромжтой газар билээ.
-            </p>
-        </div>
-    </section>
-
-    <section id="lucky-wheel-section" style="background: #fff; border-radius: 24px; box-shadow: var(--shadow-sm); margin: 40px auto; max-width: 600px; text-align: center; padding: 40px 20px;">
-        <h2 style="color: var(--brand-blue); font-size: 24px; margin-bottom: 5px;">🤔 Өнөөдөр ямар кофе уух вэ?</h2>
-        <p style="color: var(--text-light); font-size: 14px; margin-bottom: 25px;">Шийдэж чадахгүй байвал азын дугуйг эргүүлээд үзээрэй!</p>
-        
-        <div class="wheel-wrapper" style="position: relative; width: 280px; height: 280px; margin: 0 auto 25px; user-select: none;">
-            <div class="wheel-pointer" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 25px solid #ff4757; z-index: 10;"></div>
-            <div id="wheel" style="width: 100%; height: 100%; border-radius: 50%; border: 8px solid var(--brand-blue); background: conic-gradient(#1e3d7b 0deg 60deg, #4a72c4 60deg 120deg, #1e3d7b 120deg 180deg, #4a72c4 180deg 240deg, #1e3d7b 240deg 300deg, #4a72c4 300deg 360deg); transition: transform 4s cubic-bezier(0.1, 0.8, 0.1, 1); position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.15);">
-                <div style="position: absolute; width: 100%; height: 100%; color: #fff; font-weight: bold; font-size: 12px;">
-                    <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%) rotate(30deg); transform-origin: bottom center; height: 115px; display: block;">Americano</span>
-                    <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%) rotate(90deg); transform-origin: bottom center; height: 115px; display: block;">Latte</span>
-                    <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%) rotate(150deg); transform-origin: bottom center; height: 115px; display: block;">Mocha</span>
-                    <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%) rotate(210deg); transform-origin: bottom center; height: 115px; display: block;">Capuccino</span>
-                    <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%) rotate(270deg); transform-origin: bottom center; height: 115px; display: block;">Signature</span>
-                    <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%) rotate(330deg); transform-origin: bottom center; height: 115px; display: block;">Smoothie</span>
-                </div>
-            </div>
-        </div>
-        <button id="spin-btn" onclick="spinTheWheel()" style="background: #ff4757; color: #fff; border: none; padding: 12px 35px; font-size: 16px; font-weight: 700; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3); transition: 0.2s;">ЭРГҮҮЛЕХ 🎡</button>
-        <div id="wheel-result" style="margin-top: 20px; font-size: 18px; font-weight: 700; color: var(--brand-blue); min-height: 27px;"></div>
-    </section>
-
-    <section id="coffee-quiz-section" style="background: #fff; border-radius: 24px; box-shadow: var(--shadow-sm); margin: 40px auto; max-width: 600px; text-align: center; padding: 40px 20px;">
-        <h2 style="color: var(--brand-blue); font-size: 24px; margin-bottom: 5px;">☕ Өөрийн кофены амтыг ол</h2>
-        <p style="color: var(--text-light); font-size: 14px; margin-bottom: 25px;">3 асуултад хариулаад өөрт тохирох төгс амтыг олоорой!</p>
-        <div id="quiz-container">
-            <div class="quiz-step" id="step-1">
-                <p style="font-weight: 600; margin-bottom: 15px;">1. Та ямар хэмтэй ундаа уумаар байна?</p>
-                <button onclick="nextStep(2, 'hot')" style="background: var(--brand-bg); color: var(--text-dark); border: 2px solid #e2e8f0; padding: 10px 20px; margin: 5px; border-radius: 12px; cursor: pointer; font-weight: 600;">🔥 Халуун</button>
-                <button onclick="nextStep(2, 'iced')" style="background: var(--brand-bg); color: var(--text-dark); border: 2px solid #e2e8f0; padding: 10px 20px; margin: 5px; border-radius: 12px; cursor: pointer; font-weight: 600;">❄️ Хүйтэн / Мөстэй</button>
-            </div>
-            <div class="quiz-step" id="step-2" style="display: none;">
-                <p style="font-weight: 600; margin-bottom: 15px;">2. Амт нь ямар байвал дээр вэ?</p>
-                <button onclick="nextStep(3, 'bitter')" style="background: var(--brand-bg); color: var(--text-dark); border: 2px solid #e2e8f0; padding: 10px 20px; margin: 5px; border-radius: 12px; cursor: pointer; font-weight: 600;">☕ Кофены хүчтэй, гашуун</button>
-                <button onclick="nextStep(3, 'sweet')" style="background: var(--brand-bg); color: var(--text-dark); border: 2px solid #e2e8f0; padding: 10px 20px; margin: 5px; border-radius: 12px; cursor: pointer; font-weight: 600;">🍯 Чихэрлэг, амтлаг</button>
-            </div>
-            <div class="quiz-step" id="step-3" style="display: none;">
-                <p style="font-weight: 600; margin-bottom: 15px;">3. Сүү болон хөөсөнд дуртай юу?</p>
-                <button onclick="showQuizResult('milk')" style="background: var(--brand-bg); color: var(--text-dark); border: 2px solid #e2e8f0; padding: 10px 20px; margin: 5px; border-radius: 12px; cursor: pointer; font-weight: 600;">🥛 Тийм, сүүтэй</button>
-                <button onclick="showQuizResult('black')" style="background: var(--brand-bg); color: var(--text-dark); border: 2px solid #e2e8f0; padding: 10px 20px; margin: 5px; border-radius: 12px; cursor: pointer; font-weight: 600;">🖤 Үгүй, зөвхөн хар кофе</button>
-            </div>
-            <div id="quiz-result" style="display: none; margin-top: 15px; font-size: 18px; font-weight: 700; color: var(--brand-blue);">
-                <p id="quiz-result-text"></p>
-                <button onclick="resetQuiz()" style="background: var(--brand-blue); color: #fff; border: none; padding: 8px 20px; margin-top: 15px; border-radius: 20px; cursor: pointer; font-size: 13px;">Дахин эхлэх 🔄</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="menu">
-        <h2 class="section-title">Манай Цэс</h2>
-        
-        <div class="tab-container">
-            <button class="tab-btn active" onclick="openTab('coffee')">☕ Coffee & Iced</button>
-            <button class="tab-btn" onclick="openTab('smoothie')">🍹 Smoothie & Juice</button>
-            <button class="tab-btn" onclick="openTab('ade')">🥤 Ade & Drink Me</button>
-            <button class="tab-btn" onclick="openTab('hot')">🔥 Hot Drink</button>
-            <button class="tab-btn" onclick="openTab('food')">🍔 Food & Cake</button>
-            <button class="tab-btn" onclick="openTab('beans')">🛍️ Whole Bean & Cup</button>
-        </div>
-
-        <div id="coffee" class="tab-content active-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Americano</span><span class="menu-item-price">8,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Espresso</span><span class="menu-item-price">6,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cappuccino</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Latte</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Mocha</span><span class="menu-item-price">11,900 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Macchiato</span><span class="menu-item-price">7,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caramel Macchiato</span><span class="menu-item-price">11,900 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Orange Espresso</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Vanilla Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Hazelnut Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caramel Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Toffee Nut Latte</span><span class="menu-item-price">12,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Scent of M Latte (Signature)</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Einspanner</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cold Brew</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cold Brew Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Affogato</span><span class="menu-item-price">11,500 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="smoothie" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Strawberry Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Mango Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Blueberry Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Plain Yogurt Smoothie</span><span class="menu-item-price">12,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Blueberry Yogurt Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Strawberry Yogurt Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Orange Juice (Fresh)</span><span class="menu-item-price">13,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Grapefruit Juice (Fresh)</span><span class="menu-item-price">13,000 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="ade" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Lemon Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Grapefruit Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Green Apple Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Blue Lemon Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Mojito (Non-Alc)</span><span class="menu-item-price">12,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Iced Tea (Peach)</span><span class="menu-item-price">8,500 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="hot" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Real Hot Chocolate</span><span class="menu-item-price">10,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Green Tea Latte</span><span class="menu-item-price">10,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Black Tea Latte</span><span class="menu-item-price">10,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Earl Grey Tea</span><span class="menu-item-price">8,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Chamomile Tea</span><span class="menu-item-price">8,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Peppermint Tea</span><span class="menu-item-price">8,000 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="food" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Ham & Cheese Sandwich</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Club Sandwich</span><span class="menu-item-price">14,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Croissant</span><span class="menu-item-price">6,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cheese Cake</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Choco Lava Cake</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Tiramisu</span><span class="menu-item-price">10,000 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="beans" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Italy House Blend (250g)</span><span class="menu-item-price">45,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Scent of M Reusable Cup</span><span class="menu-item-price">18,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Tumbler (Brand)</span><span class="menu-item-price">35,000 ₮</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title">Холбоо Барих</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <h3>📍 Хаяг байршил</h3>
-                <p>Дорноговь аймаг, Замын-Үүд сум, Хасбанкны 1-р давхар</p>
-            </div>
-            <div class="contact-card">
-                <h3>📞 Утас</h3>
-                <p>+976 9191 4699 </p>
-            </div>
-            <div class="contact-card">
-                <h3>⏰ Цагийн хуваарь</h3>
-                <p>Өдөр бүр: 08:00 - 22:00</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Scent of M Coffee Shop. All rights reserved.</p>
-    </footer>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        function openTab(tabName) {
-            var i;
-            var x = document.getElementsByClassName("tab-content");
-            for (i = 0; i < x.length; i++) {
-                x[i].classList.remove("active-content");
-            }
-            var buttons = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.add("active-content");
-            event.currentTarget.classList.add("active");
-        }
-
-        let canSpin = true;
-        function spinTheWheel() {
-            if (!canSpin) return;
-            canSpin = false;
+        AOS.init();
+        const coffees = ["Americano", "Latte", "Cappuccino", "Mocha"];
+        
+        function spin() {
             const wheel = document.getElementById('wheel');
-            const resultDiv = document.getElementById('wheel-result');
-            const btn = document.getElementById('spin-btn');
-            resultDiv.innerText = "Эргэж байна...";
-            btn.style.opacity = "0.6";
-            const randomDegrees = Math.floor(Math.random() * 360) + 1800; 
-            wheel.style.transform = `rotate(${randomDegrees}deg)`;
+            let deg = Math.floor(Math.random() * 3600) + 720;
+            wheel.style.transform = `rotate(${deg}deg)`;
             setTimeout(() => {
-                const actualDegrees = randomDegrees % 360;
-                let choice = "";
-                if (actualDegrees >= 0 && actualDegrees < 60) choice = "🥤 Амтлаг Smoothie";
-                else if (actualDegrees >= 60 && actualDegrees < 120) choice = "🌟 Scent of M Signature";
-                else if (actualDegrees >= 120 && actualDegrees < 180) choice = "☕ Хөөсөн Cappuccino";
-                else if (actualDegrees >= 180 && actualDegrees < 240) choice = "🍫 Амтат Caffe Mocha";
-                else if (actualDegrees >= 240 && actualDegrees < 300) choice = "🥛 Зөөлөн Caffe Latte";
-                else choice = "🖤 Хүчтэй Caffe Americano";
-                resultDiv.innerHTML = `🎉 Танд тохирох кофе: <span style="color: #ff4757;">${choice}</span>`;
-                canSpin = true;
-                btn.style.opacity = "1";
+                document.getElementById('res').innerText = "Таны кофе: " + coffees[Math.floor((deg % 360) / 90)];
             }, 4000);
         }
 
-        let quizAnswers = {};
-        function nextStep(next, answer) {
-            if (next === 2) quizAnswers.temp = answer;
-            if (next === 3) quizAnswers.taste = answer;
-            document.getElementById('step-1').style.display = 'none';
-            document.getElementById('step-2').style.display = 'none';
-            document.getElementById('step-3').style.display = 'none';
-            document.getElementById('step-' + next).style.display = 'block';
-        }
-        function showQuizResult(milkPreference) {
-            quizAnswers.milk = milkPreference;
-            document.getElementById('step-3').style.display = 'none';
-            const resultDiv = document.getElementById('quiz-result');
-            const resultText = document.getElementById('quiz-result-text');
-            let finalCoffee = "";
-            if (quizAnswers.temp === 'hot' && quizAnswers.taste === 'bitter' && quizAnswers.milk === 'black') finalCoffee = "☕ Caffe Espresso эсвэл Hot Americano";
-            else if (quizAnswers.temp === 'hot' && quizAnswers.taste === 'bitter' && quizAnswers.milk === 'milk') finalCoffee = "🥛 Зөөлөн Cappuccino эсвэл Caffe Latte";
-            else if (quizAnswers.temp === 'hot' && quizAnswers.taste === 'sweet') finalCoffee = "🍫 @мтат Caramel Macchiato эсвэл Caffe Mocha";
-            else if (quizAnswers.temp === 'iced' && quizAnswers.taste === 'bitter' && quizAnswers.milk === 'black') finalCoffee = "❄️ Сэргээш болох Iced Americano";
-            else if (quizAnswers.temp === 'iced' && quizAnswers.taste === 'bitter' && quizAnswers.milk === 'milk') finalCoffee = "🥛 Сэрүүцүүлэх Iced Latte эсвэл Cold Brew Latte";
-            else if (quizAnswers.temp === 'iced' && quizAnswers.taste === 'sweet') finalCoffee = "🍹 Шинэлэг Orange Espresso эсвэл Амтлаг Smoothie";
-            else finalCoffee = "🌟 Манай Signature: Scent of M Latte";
-            resultText.innerHTML = `🎉 Танд яг тохирох амт: <br><span style="color: #ff4757; font-size: 22px;">${finalCoffee}</span>`;
-            resultDiv.style.display = 'block';
-        }
-        function resetQuiz() {
-            quizAnswers = {};
-            document.getElementById('quiz-result').style.display = 'none';
-            document.getElementById('step-2').style.display = 'none';
-            document.getElementById('step-3').style.display = 'none';
-            document.getElementById('step-1').style.display = 'block';
+        function showTab(id) {
+            document.querySelectorAll('.active-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).style.display = 'grid';
+            event.currentTarget.classList.add('active');
         }
     </script>
-
 </body>
 </html>
