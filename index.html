@@ -536,6 +536,20 @@
         </div>
     </div>
 </section>
+<script>
+    function openCategory(evt, categoryName) {
+        var tabcontent = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active-content");
+        }
+        var tablinks = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(categoryName).classList.add("active-content");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 
 
     <footer>
