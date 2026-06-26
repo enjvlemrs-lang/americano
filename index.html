@@ -4,63 +4,334 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scent of M - Italy Coffee Shop</title>
-    <!-- AOS болон Фонт -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Floating Steam Animation */
-        .steam-container { position: absolute; top: 100px; left: 50%; transform: translateX(-50%); z-index: 2; pointer-events: none; }
-        .steam { position: absolute; background: rgba(255,255,255,0.4); width: 3px; height: 30px; border-radius: 50%; animation: rise 3s infinite linear; }
-        @keyframes rise { 0% { opacity: 0; transform: translateY(0); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(-60px); } }
-
         :root {
-            --brand-blue: #1e3d7b; --brand-light-blue: #4a72c4; --brand-bg: #f4f7fc;
-            --text-dark: #2c3e50; --text-light: #55637a; --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --brand-blue: #1e3d7b;
+            --brand-light-blue: #4a72c4;  enecode bnshde 
+            --brand-bg: #f4f7fc;
+            --text-dark: #2c3e50;
+            --text-light: #55637a;
+            --shadow-sm: 0 2px 8px rgba(30, 61, 123, 0.04);
+            --shadow-md: 0 8px 24px rgba(30, 61, 123, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--brand-bg); color: var(--text-dark); overflow-x: hidden; }
 
-        /* Таны үндсэн CSS-үүд бүгд энд байна... */
-        header { background: rgba(255, 255, 255, 0.95); position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .hero { margin-top: 70px; height: 450px; background: linear-gradient(rgba(30, 61, 123, 0.6), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600&auto=format&fit=crop') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--brand-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--brand-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--brand-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: var(--brand-light-blue);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--brand-blue);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-blue);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .hero {
+            margin-top: 70px;
+            height: 450px;
+            background: linear-gradient(rgba(30, 61, 123, 0.4), rgba(44, 62, 80, 0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600&auto=format&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #fff;
+            color: var(--brand-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--brand-blue);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 70px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2.section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            color: var(--brand-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        section h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--brand-blue);
+            border-radius: 2px;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            background: #fff;
+            padding: 10px;
+            border-radius: 35px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: none;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            background: #f0f3f8;
+            color: var(--brand-blue);
+        }
+
+        .tab-btn.active {
+            background: var(--brand-blue);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item-row {
+            background: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid var(--brand-blue);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .menu-item-row:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            background: #fbfdff;
+        }
+
+        .menu-item-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .menu-item-price {
+            font-size: 15px;
+            color: var(--brand-blue);
+            font-weight: 700;
+            background: #f0f4fc;
+            padding: 6px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .tab-content {
+            display: none !important;
+        }
         
-        /* Micro-interactions */
-        .menu-item-row { transition: var(--transition); }
-        .menu-item-row:hover { transform: translateY(-5px) scale(1.01); background: #fbfdff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        
-        #wheel { transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); cursor: pointer; }
+        .tab-content.active-content {
+            display: block !important;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-card h3 {
+            color: var(--brand-blue);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        footer {
+            background: #1a2a4a;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 4%; }
+            nav ul { gap: 15px; }
+            nav ul li a { font-size: 12px; }
+            .hero h2 { font-size: 30px; }
+            .hero p { font-size: 15px; }
+            section { padding: 50px 4%; }
+        }
     </style>
 </head>
-
 <body>
-    <header>...</header> <!-- Таны хуучин header-ийг энд тавиарай -->
-    
-    <div class="hero" id="home">
-        <div class="steam-container">
-            <div class="steam" style="left: -20px; animation-delay: 0s;"></div>
-            <div class="steam" style="left: 0px; animation-delay: 1.5s;"></div>
-            <div class="steam" style="left: 20px; animation-delay: 1s;"></div>
-        </div>
-        <div class="hero-content" data-aos="fade-up">
-            <h2>Итали Чанарыг Замын-Үүдэд</h2>
-            <a href="#menu" class="btn">Цэс үзэх</a>
-        </div>
-    </div>
-
-    <!-- Азын дугуй болон бусад бүх section-ууд -->
-    <section id="lucky-wheel-section" data-aos="fade-up">
-        <!-- Таны азын дугуйны код -->
-    </section>
-
-    <!-- Script хэсэгт AOS-ийг заавал идэвхжүүлээрэй -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-        // Таны өмнөх бүх JS функцууд энд байна...
-    </script>
-</body>
-</html>
 
     <header>
         <div class="logo-container">
