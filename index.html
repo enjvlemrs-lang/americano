@@ -249,27 +249,53 @@
             box-shadow: var(--shadow-md);
             background: #fbfdff;
         }
-.journey-section {
-    padding: 60px 5%;
-    max-width: 1200px;
-    margin: 40px auto;
-    text-align: center;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+.journal-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
 }
 
-.journey-section h2 {
-    color: var(--brand-blue);
-    font-size: 28px;
-    margin-bottom: 20px;
+.journal-title {
+  font-family: 'Playfair Display', serif; /* Тансаг харагдуулах фонт */
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+  color: #2c2c2c;
 }
 
-.journey-section p {
-    color: #55637a;
-    font-size: 16px;
-    line-height: 1.8;
+.journal-card {
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e0e0e0; /* Минималист нарийн шугам */
+  margin-bottom: 40px;
 }
+
+.category {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: #888;
+}
+
+.journal-card h3 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+.journal-card p {
+  color: #666;
+  line-height: 1.6;
+ .journal-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+
+  
+        }
 
         .menu-item-name {
             font-size: 16px;
@@ -349,6 +375,7 @@
             .hero h2 { font-size: 30px; }
             .hero p { font-size: 15px; }
             section { padding: 50px 4%; }
+       
         }
     </style>
 </head>
@@ -393,10 +420,13 @@
         </div>
     </section>
 
-<section id="journey" class="journey-section">
-    <h2>The Journey</h2>
-    <p>Бидний Итали кофены соёл, үр бүхний түүх. SCENT OF M-ийн аялал таны өдрийг илүү утга учиртай болгоно.</p>
-</section>
+ <article class="journal-card">
+  <!-- Өглөөний кофе ба хөгжмийн зураг -->
+  <img src="https://images.unsplash.com/photo-1506619216599-9d16109005d2?q=80&w=600" alt="Morning coffee and music" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;"> 
+  <span class="category">Rituals</span>
+  <h3>Өглөөний кофе ба сонгодог хөгжим</h3>
+  <p>Таны өдрийг илүү утга учиртай болгох эгшин...</p>
+</article>
 
     <section id="menu">
         <h2 class="section-title">Манай Цэс</h2>
