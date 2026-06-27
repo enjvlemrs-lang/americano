@@ -1,561 +1,586 @@
- 	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scent of M - Italy Coffee Shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --brand-blue: #1e3d7b;
-            --brand-light-blue: #4a72c4;  enecode bnshde 
-            --brand-bg: #f4f7fc;
-            --text-dark: #2c3e50;
-            --text-light: #55637a;
-            --shadow-sm: 0 2px 8px rgba(30, 61, 123, 0.04);
-            --shadow-md: 0 8px 24px rgba(30, 61, 123, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scent of M | Дээд Зэрэглэлийн Кофе Бутик</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#11203a;
+    --navy-deep:#0b1626;
+    --cream:#f8f4ec;
+    --gold:#c9974e;
+    --gold-light:#e7c98f;
+    --ink:#2c2a26;
+    --line:rgba(17,32,58,0.12);
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Jost', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .container{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 56px;
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Montserrat', sans-serif;
-        }
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(248,244,236,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 56px;
+    max-width:1280px;margin:0 auto;
+  }
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{
+    width:38px;height:38px;border:1px solid var(--navy);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--navy);
+  }
+  .logo-text .name{
+    font-family:var(--serif);font-size:1.05rem;letter-spacing:.12em;color:var(--navy);font-weight:600;
+  }
+  .logo-text .sub{font-size:.56rem;letter-spacing:.16em;color:#8a7a5f;text-transform:uppercase;}
+  nav.primary{display:flex;gap:38px;}
+  nav.primary a{
+    font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);
+    position:relative;padding-bottom:6px;
+  }
+  nav.primary a.active{color:var(--gold);}
+  nav.primary a.active::after{
+    content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);
+  }
+  .nav-right{display:flex;align-items:center;gap:22px;}
+  .icon-btn{width:20px;height:20px;color:var(--navy);position:relative;}
+  .icon-btn svg{width:100%;height:100%;}
+  .bag-count{
+    position:absolute;top:-8px;right:-10px;
+    background:var(--gold);color:#fff;font-size:.6rem;
+    width:16px;height:16px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lang{display:flex;align-items:center;gap:4px;font-size:.78rem;letter-spacing:.06em;color:var(--navy);}
 
-        body {
-            background-color: var(--brand-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:64px 56px 40px;
+    max-width:1280px;margin:0 auto;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;
+    min-height:480px;
+  }
+  .hero-copy h1{
+    font-family:var(--serif);
+    font-size:clamp(2.6rem,5vw,3.8rem);
+    line-height:1.05;
+    color:var(--navy);
+    font-weight:500;
+    margin:14px 0 22px;
+  }
+  .hero-copy p{
+    font-size:.95rem;line-height:1.7;color:#5b5648;max-width:340px;margin-bottom:30px;
+  }
+  .hero-actions{display:flex;align-items:center;gap:26px;}
+  .btn-primary{
+    background:var(--navy);color:#fff;
+    padding:15px 30px;
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:background .25s ease;
+  }
+  .btn-primary:hover{background:var(--navy-deep);}
+  .watch-story{display:flex;align-items:center;gap:12px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
+  .play-circle{
+    width:36px;height:36px;border-radius:50%;border:1px solid var(--navy);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .hero-figure{position:relative;border-radius:6px;overflow:hidden;}
+  .hero-figure img{width:100%;height:480px;object-fit:cover;}
+  .hero-progress{display:flex;align-items:center;gap:14px;margin-top:38px;font-size:.78rem;color:#8a7a5f;letter-spacing:.06em;}
+  .hero-progress .track{width:90px;height:1px;background:var(--line);position:relative;}
+  .hero-progress .track::after{content:"";position:absolute;left:0;top:0;width:38%;height:1px;background:var(--gold);}
 
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  /* ===== SECTION HEADERS ===== */
+  .section-head{text-align:center;margin-bottom:46px;position:relative;}
+  .section-head .eyebrow{display:block;margin-bottom:10px;}
+  .section-head h2{
+    font-family:var(--serif);font-size:2.1rem;color:var(--navy);font-weight:500;
+  }
+  .section-head .rule{
+    width:60px;height:1px;background:var(--line);margin:16px auto 0;position:relative;
+  }
+  .section-head .rule::after{
+    content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    font-size:.5rem;color:var(--gold);background:var(--cream);padding:0 8px;
+  }
+  .section-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .view-all{
+    font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);
+    display:flex;align-items:center;gap:4px;flex-shrink:0;
+  }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+  /* ===== SIGNATURE SELECTION ===== */
+  .selection{padding:88px 0 70px;}
+  .product-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .product-card{background:#fff;border:1px solid var(--line);}
+  .product-card .thumb{aspect-ratio:1/1;overflow:hidden;}
+  .product-card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .product-card:hover .thumb img{transform:scale(1.06);}
+  .product-info{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;}
+  .product-info .name{font-family:var(--serif);font-size:1.02rem;color:var(--navy);font-weight:600;}
+  .product-info .price{font-size:.82rem;color:#8a7a5f;margin-top:2px;}
+  .add-btn{
+    width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;flex-shrink:0;
+    transition:background .2s ease,color .2s ease;
+  }
+  .add-btn:hover{background:var(--gold);color:#fff;}
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--brand-blue);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
-        }
+  /* ===== STORY ===== */
+  .story{padding:0 0 80px;}
+  .story-grid{display:grid;grid-template-columns:1fr 1.2fr;align-items:center;}
+  .story-copy{padding:60px 64px;}
+  .story-copy h2{
+    font-family:var(--serif);font-size:2.3rem;color:var(--navy);font-weight:500;line-height:1.15;margin:14px 0 22px;
+  }
+  .story-copy p{font-size:.92rem;line-height:1.8;color:#5b5648;margin-bottom:30px;max-width:380px;}
+  .story-figure{position:relative;}
+  .story-figure img{width:100%;height:460px;object-fit:cover;}
+  .story-badge{
+    position:absolute;top:36px;left:36px;
+    color:#fff;text-align:center;
+  }
+  .story-badge .circle{
+    width:64px;height:64px;border:1px solid var(--gold-light);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:1.6rem;font-style:italic;margin:0 auto 8px;
+  }
+  .story-badge .mname{font-family:var(--serif);font-size:.78rem;letter-spacing:.1em;}
+  .story-badge .msub{font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75;}
 
-        .logo-text h1 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--brand-blue);
-            letter-spacing: 0.5px;
-        }
+  /* ===== FEATURES BAR ===== */
+  .features{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:46px 0;
+  }
+  .features-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .feature{display:flex;align-items:flex-start;gap:16px;padding:0 30px;position:relative;}
+  .feature:not(:last-child)::after{
+    content:"";position:absolute;right:0;top:4px;bottom:4px;width:1px;background:var(--line);
+  }
+  .feature .ficon{
+    width:30px;height:30px;color:var(--gold);flex-shrink:0;
+  }
+  .feature .ficon svg{width:100%;height:100%;}
+  .feature h4{font-size:.82rem;letter-spacing:.04em;color:var(--navy);margin-bottom:5px;}
+  .feature p{font-size:.78rem;color:#8a7a5f;line-height:1.5;}
 
-        .logo-text p {
-            font-size: 11px;
-            color: var(--brand-light-blue);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
+  /* ===== BEST SELLERS ===== */
+  .best-sellers{padding:80px 0;}
+  .bestseller-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .bs-card .thumb{aspect-ratio:4/5;overflow:hidden;border-radius:4px;}
+  .bs-card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .bs-card:hover .thumb img{transform:scale(1.06);}
+  .bs-card .name{
+    font-family:var(--serif);font-size:.95rem;color:var(--navy);text-align:center;margin-top:14px;font-weight:600;
+  }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
+  /* ===== INSTAGRAM / FOOTER ===== */
+  footer{background:var(--navy);color:#cfd3da;}
+  .insta-section{padding:64px 56px 50px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .insta-top{
+    display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:30px;flex-wrap:wrap;gap:24px;
+  }
+  .insta-top h3{font-family:var(--serif);font-size:1.5rem;color:#fff;font-weight:500;margin-bottom:6px;}
+  .insta-top .handle{font-size:.82rem;color:var(--gold-light);}
+  .insta-link{
+    border:1px solid var(--gold);color:var(--gold-light);
+    padding:11px 22px;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+  .insta-grid .thumb{aspect-ratio:1/1;overflow:hidden;border-radius:3px;}
+  .insta-grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .insta-grid .thumb:hover img{transform:scale(1.08);}
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;
+    gap:30px;padding:60px 56px;
+    max-width:1280px;margin:0 auto;
+  }
+  .footer-brand{display:flex;flex-direction:column;gap:14px;}
+  .footer-brand .top{display:flex;align-items:center;gap:10px;}
+  .footer-brand .top .circle{
+    width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-family:var(--serif);font-style:italic;
+  }
+  .footer-brand .top .fname{font-family:var(--serif);color:#fff;font-size:1rem;letter-spacing:.06em;}
+  .footer-brand .top .fsub{font-size:.55rem;letter-spacing:.12em;color:var(--gold-light);text-transform:uppercase;}
+  .footer-brand p{font-size:.8rem;line-height:1.7;color:#9aa1ad;max-width:230px;}
+  .socials{display:flex;gap:12px;margin-top:8px;}
+  .socials a{
+    width:30px;height:30px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:#cfd3da;font-size:.78rem;
+  }
+  .fcol h5{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:18px;}
+  .fcol ul{display:flex;flex-direction:column;gap:11px;}
+  .fcol a{font-size:.84rem;color:#9aa1ad;}
+  .fcol .contact-line{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;color:#9aa1ad;margin-bottom:11px;}
+  .fcol .contact-line svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:var(--gold-light);}
+  .newsletter p{font-size:.84rem;color:#9aa1ad;line-height:1.6;margin-bottom:16px;}
+  .news-form{display:flex;border:1px solid rgba(255,255,255,.2);}
+  .news-form input{
+    flex:1;background:none;border:none;padding:13px 14px;font-size:.8rem;color:#fff;font-family:inherit;
+  }
+  .news-form input::placeholder{color:#7c8290;}
+  .news-form button{
+    width:46px;display:flex;align-items:center;justify-content:center;color:var(--gold-light);flex-shrink:0;
+  }
+  .copyright{
+    text-align:center;padding:22px 0;font-size:.76rem;color:#7c8290;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
 
-        nav ul li a:hover, nav ul li a.active {
-            color: var(--brand-blue);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--brand-blue);
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover::after, nav ul li a.active::after {
-            width: 100%;
-        }
-
-        .hero {
-            margin-top: 70px;
-            height: 450px;
-            background: linear-gradient(rgba(30, 61, 123, 0.4), rgba(44, 62, 80, 0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600&auto=format&fit=crop') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-
-        .hero-content h2 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            opacity: 0.9;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #fff;
-            color: var(--brand-blue);
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .btn:hover {
-            background: var(--brand-blue);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 70px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2.section-title {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 35px;
-            color: var(--brand-blue);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        section h2.section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--brand-blue);
-            border-radius: 2px;
-        }
-
-        .tab-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-            background: #fff;
-            padding: 10px;
-            border-radius: 35px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .tab-btn {
-            background: transparent;
-            color: var(--text-light);
-            border: none;
-            padding: 10px 22px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .tab-btn:hover {
-            background: #f0f3f8;
-            color: var(--brand-blue);
-        }
-
-        .tab-btn.active {
-            background: var(--brand-blue);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(30, 61, 123, 0.2);
-        }
-
-        .menu-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .menu-item-row {
-            background: #fff;
-            padding: 20px;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 5px solid var(--brand-blue);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .menu-item-row:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            background: #fbfdff;
-        }
-.journal-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
-.journal-title {
-  font-family: 'Playfair Display', serif; /* Тансаг харагдуулах фонт */
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 50px;
-  letter-spacing: 2px;
-  color: #2c2c2c;
-}
-
-.journal-card {
-  padding-bottom: 40px;
-  border-bottom: 1px solid #e0e0e0; /* Минималист нарийн шугам */
-  margin-bottom: 40px;
-}
-
-.category {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  color: #888;
-}
-
-.journal-card h3 {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 300;
-  margin: 10px 0;
-  font-size: 1.5rem;
-}
-
-.journal-card p {
-  color: #666;
-  line-height: 1.6;
-
- 
- .journal-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
-
-  
-        }
-
-        .menu-item-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .menu-item-price {
-            font-size: 15px;
-            color: var(--brand-blue);
-            font-weight: 700;
-            background: #f0f4fc;
-            padding: 6px 14px;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
-
-        .tab-content {
-            display: none !important;
-        }
-        
-        .tab-content.active-content {
-            display: block !important;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .contact-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-card h3 {
-            color: var(--brand-blue);
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        footer {
-            background: #1a2a4a;
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 13px;
-            margin-top: 60px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            header { padding: 15px 4%; }
-            nav ul { gap: 15px; }
-            nav ul li a { font-size: 12px; }
-            .hero h2 { font-size: 30px; }
-            .hero p { font-size: 15px; }
-            section { padding: 50px 4%; }
-       
-        }
-    </style>
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1024px){
+    .container,.nav-wrap{padding:0 28px;}
+    .hero{padding:40px 28px;}
+    nav.primary{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-figure img{height:340px;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .bestseller-grid{grid-template-columns:repeat(2,1fr);}
+    .insta-grid{grid-template-columns:repeat(3,1fr);}
+    .story-grid{grid-template-columns:1fr;}
+    .story-copy{padding:40px 28px;}
+    .features-grid{grid-template-columns:repeat(2,1fr);gap:30px;}
+    .feature:nth-child(2)::after{display:none;}
+    .footer-grid{grid-template-columns:repeat(2,1fr);padding:50px 28px;}
+    .insta-section{padding:50px 28px;}
+  }
+  @media (max-width:600px){
+    .product-grid,.bestseller-grid{grid-template-columns:repeat(2,1fr);}
+    .insta-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-copy p{max-width:100%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;}
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <div class="logo-icon">M</div>
-            <div class="logo-text">
-                <h1>SCENT OF M</h1>
-                <p>Italy Coffee Shop</p>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home" class="active">Нүүр</a></li> 
-                <li><a href="#menu">Цэс</a></li>
-                <li><a href="#about">Бидний тухай</a></li>
-                <li><a href="#contact">Холбоо барих</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="hero" id="home">
-        <div class="hero-content">
-            <h2>Итали Чанарыг Замын-Үүдэд</h2>
-            <p>Scent of M кофе шопод тавтай морилно уу</p>
-            <a href="#menu" class="btn">Цэс үзэх</a>
-        </div>
+<header>
+  <div class="nav-wrap">
+    <div class="logo">
+      <div class="logo-mark">M</div>
+      <div class="logo-text">
+        <div class="name">SCENT OF M</div>
+        <div class="sub">Дээд зэрэглэлийн кофе бутик</div>
+      </div>
     </div>
-
-    <section id="about" style="background-color: #ffffff; padding: 60px 5%; border-radius: 20px; box-shadow: var(--shadow-sm); margin: 60px auto; max-width: 800px; text-align: center; animation: fadeIn 1s ease;">
-        <h2 style="color: var(--brand-blue); font-size: 28px; font-weight: 700; margin-bottom: 15px;">Бидний Тухай</h2>
-        <div style="margin-top: 25px;">
-            <p style="font-size: 18px; color: var(--brand-blue); font-weight: 700; margin-bottom: 15px;">"Итали Чанарыг Замын-Үүдэд"</p>
-            <p style="font-size: 15px; color: var(--text-light); line-height: 1.8; text-align: justify; margin-bottom: 15px;">
-                <strong>SCENT OF M</strong> кофе шоп нь Дорноговь аймгийн Замын-Үүд суманд Итали кофе уух соёлыг түгээж буй хамгийн тухтай орчин юм.
-            </p>
-            <p style="font-size: 15px; color: var(--text-light); line-height: 1.8; text-align: justify;">
-                Хасбанкны 1 давхарт байрлах манай уудам, тухлаг орчин нь найз нөхдөөрөө тухлан суух, ажил хэргийн уулзалт хийх болон амтат кофегоо амтархан уухад хамгийн тохиромжтой газар билээ.
-            </p>
-        </div>
-    </section>
-
-<article class="journal-card">
-  <!-- Unsplash-аас авсан кофены зураг -->
-  <img src="https://images.unsplash.com/photo-1512568400610-62da217a4756?q=80&w=600" alt="Coffee aesthetic" class="journal-img">
-  <span class="category">Rituals</span>
-  <h3>Өглөөний кофе ба сонгодог хөгжим</h3>
-  <p>Таны өдрийг илүү утга учиртай болгох эгшин...</p>
-</article>
-
-
-    <section id="menu">
-        <h2 class="section-title">Манай Цэс</h2>
-        
-        <div class="tab-container">
-            <button class="tab-btn active" onclick="openTab('coffee')">☕ Coffee & Iced</button>
-            <button class="tab-btn" onclick="openTab('smoothie')">🍹 Smoothie & Juice</button>
-            <button class="tab-btn" onclick="openTab('ade')">🥤 Ade & Drink Me</button>
-            <button class="tab-btn" onclick="openTab('hot')">🔥 Hot Drink</button>
-            <button class="tab-btn" onclick="openTab('food')">🍔 Food & Cake</button>
-            <button class="tab-btn" onclick="openTab('beans')">🛍️ Whole Bean & Cup</button>
-        </div>
-
-        <div id="coffee" class="tab-content active-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Americano</span><span class="menu-item-price">8,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Espresso</span><span class="menu-item-price">6,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cappuccino</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Latte</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Mocha</span><span class="menu-item-price">11,900 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caffe Macchiato</span><span class="menu-item-price">7,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caramel Macchiato</span><span class="menu-item-price">11,900 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Orange Espresso</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Vanilla Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Hazelnut Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Caramel Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Toffee Nut Latte</span><span class="menu-item-price">12,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Scent of M Latte (Signature)</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Einspanner</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cold Brew</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cold Brew Latte</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Affogato</span><span class="menu-item-price">11,500 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="smoothie" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Strawberry Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Mango Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Blueberry Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Plain Yogurt Smoothie</span><span class="menu-item-price">12,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Blueberry Yogurt Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Strawberry Yogurt Smoothie</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Orange Juice (Fresh)</span><span class="menu-item-price">13,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Grapefruit Juice (Fresh)</span><span class="menu-item-price">13,000 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="ade" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Lemon Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Grapefruit Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Green Apple Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Blue Lemon Ade</span><span class="menu-item-price">11,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Mojito (Non-Alc)</span><span class="menu-item-price">12,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Iced Tea (Peach)</span><span class="menu-item-price">8,500 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="hot" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Real Hot Chocolate</span><span class="menu-item-price">10,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Green Tea Latte</span><span class="menu-item-price">10,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Black Tea Latte</span><span class="menu-item-price">10,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Earl Grey Tea</span><span class="menu-item-price">8,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Chamomile Tea</span><span class="menu-item-price">8,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Peppermint Tea</span><span class="menu-item-price">8,000 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="food" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Ham & Cheese Sandwich</span><span class="menu-item-price">12,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Club Sandwich</span><span class="menu-item-price">14,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Croissant</span><span class="menu-item-price">6,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Cheese Cake</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Choco Lava Cake</span><span class="menu-item-price">9,500 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Tiramisu</span><span class="menu-item-price">10,000 ₮</span></div>
-            </div>
-        </div>
-
-        <div id="beans" class="tab-content">
-            <div class="menu-container">
-                <div class="menu-item-row"><span class="menu-item-name">Italy House Blend (250g)</span><span class="menu-item-price">45,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Scent of M Reusable Cup</span><span class="menu-item-price">18,000 ₮</span></div>
-                <div class="menu-item-row"><span class="menu-item-name">Tumbler (Brand)</span><span class="menu-item-price">35,000 ₮</span></div>
-            </div>
-        </div>
-    </section>
-
- <section id="contact" style="text-align: center; padding: 60px 5%;">
-    <h2 style="color: var(--brand-blue); margin-bottom: 20px;">Холбоо Барих</h2>
-    <div style="width: 50px; height: 2px; background: var(--brand-blue); margin: 0 auto 30px;"></div>
-    
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; color: #333;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <span>📍</span> <strong>Хаяг байршил:</strong> Дорноговь аймаг, Замын-Үүд сум, Хасбанкны 1-р давхар
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <span>📞</span> <strong>Утас:</strong> +976 9191-4699
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <span>⏰</span> <strong>Цагийн хуваарь:</strong> Өдөр бүр: 08:00 - 22:00
-        </div>
+    <nav class="primary">
+      <a href="#" class="active">НҮҮР</a>
+      <a href="#story">БИДНИЙ ТУХАЙ</a>
+      <a href="#selection">ДЭЛГҮҮР</a>
+      <a href="#bestsellers">МЕНЮ</a>
+      <a href="#instagram">ЗУРГИЙН САН</a>
+      <a href="#footer">ХОЛБОО БАРИХ</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Cart, 0 items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 1 1 6 0"/></svg>
+        <span class="bag-count">0</span>
+      </button>
+      <div class="lang">MN
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
     </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Дээд Зэрэглэлийн Кофены Туршлага</span>
+      <h1>Аяга Бүр<br>Өөрийн Түүхтэй</h1>
+      <p>Бид зүгээр л кофе хийдэггүй, харин аз жаргалын мөч бүтээдэг. Анхилуун үнэрийг мэдрэн, төгс амтыг амтлаарай.</p>
+      <div class="hero-actions">
+        <a href="#selection" class="btn-primary">Менюг Үзэх
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
+        <a href="#story" class="watch-story">
+          <span class="play-circle">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"/></svg>
+          </span>
+          Бидний Түүхийг Үзэх
+        </a>
+      </div>
+      <div class="hero-progress">
+        <span>01</span>
+        <span class="track"></span>
+        <span>03</span>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=1200&auto=format&fit=crop" alt="Latte art in a navy Scent of M mug on a marble counter">
+    </div>
+  </div>
 </section>
-<script>
-    function openCategory(evt, categoryName) {
-        var tabcontent = document.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].classList.remove("active-content");
-        }
-        var tablinks = document.getElementsByClassName("tab-btn");
-        for (var i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.getElementById(categoryName).classList.add("active-content");
-        evt.currentTarget.classList.add("active");
-    }
-</script>
 
+<section class="selection" id="selection">
+  <div class="container">
+    <div class="section-row">
+      <div class="section-head" style="margin-bottom:0;text-align:left;flex:1;">
+        <span class="eyebrow">Дээд Зэрэглэлийн Цуглуулга</span>
+        <h2>Бидний Онцлох Сонголт</h2>
+      </div>
+      <a href="#" class="view-all">Бүгдийг Үзэх
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </a>
+    </div>
+    <div style="height:40px;"></div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop" alt="Scent of M Signature latte"></div>
+        <div class="product-info">
+          <div><div class="name">Scent of M Сигнатур</div><div class="price">$6.80</div></div>
+          <button class="add-btn" aria-label="Scent of M Сигнатур-ыг сагсанд нэмэх">+</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=600&auto=format&fit=crop" alt="Gold Flake Latte"></div>
+        <div class="product-info">
+          <div><div class="name">Алтан Навчит Латте</div><div class="price">$7.20</div></div>
+          <button class="add-btn" aria-label="Алтан Навчит Латте-г сагсанд нэмэх">+</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600&auto=format&fit=crop" alt="Caramel Macchiato"></div>
+        <div class="product-info">
+          <div><div class="name">Карамель Маккиато</div><div class="price">$6.20</div></div>
+          <button class="add-btn" aria-label="Карамель Маккиато-г сагсанд нэмэх">+</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=600&auto=format&fit=crop" alt="Mocha Perfection"></div>
+        <div class="product-info">
+          <div><div class="name">Төгс Мока</div><div class="price">$6.20</div></div>
+          <button class="add-btn" aria-label="Төгс Мока-г сагсанд нэмэх">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Scent of M Coffee Shop. All rights reserved.</p>
-    </footer>
+<section class="story" id="story">
+  <div class="story-grid">
+    <div class="story-copy">
+      <span class="eyebrow">Бидний Түүх</span>
+      <h2>Хүсэл Тэмүүллээр Хийж,<br>Зүрх Сэтгэлээрээ Үйлчилнэ.</h2>
+      <p>Scent of M-д бид кофег ердийн ундаа гэж үздэггүй. Энэ бол туршлага, хүсэл тэмүүлэл, амьдралын хэв маяг юм. Бид дэлхийн шилдэг кофены үрийг сонгон авч, аяга бүрийг хайр, төгс төгөлдөр байдлаар бэлддэг.</p>
+      <a href="#" class="btn-primary">Бидний Түүхийг Нээж Үзэх
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </a>
+    </div>
+    <div class="story-figure">
+      <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=1200&auto=format&fit=crop" alt="Interior of the Scent of M coffee boutique">
+      <div class="story-badge">
+        <div class="circle">M</div>
+        <div class="mname">SCENT OF M</div>
+        <div class="msub">Дээд зэрэглэлийн кофе бутик</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 9c0-2 1.5-3 3-3s3 1 3 3-1.5 3-3 4-3 2-3 4"/></svg></div>
+        <div><h4>100% Дээд Зэрэглэлийн Үр</h4><p>Дэлхийн шилдэг кофены бүс нутгаас сонгон бэлтгэсэн</p></div>
+      </div>
+      <div class="feature">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 9h14l-1 11H6L5 9z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg></div>
+        <div><h4>Мэргэжлийн Гараар Хийгдсэн</h4><p>Мэргэжлийн барист нар хайр, нямбай байдлаар бэлддэг</p></div>
+      </div>
+      <div class="feature">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="8" width="13" height="8"/><path d="M15 11h4l3 3v2h-7z"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></div>
+        <div><h4>Хурдан Хүргэлт</h4><p>Шинэлэг байдлыг гэрийн босгон дээр хүргэнэ</p></div>
+      </div>
+      <div class="feature">
+        <div class="ficon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.4-9.5-9C.6 8.4 2.8 4.5 6.5 4.5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2 3.7 0 5.9 3.9 4 7.5C19 16.6 12 21 12 21z"/></svg></div>
+        <div><h4>Хайраар Бэлтгэсэн</h4><p>Аяга бүрийг хайр, төгс төгөлдөр байдлаар бэлддэг</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="best-sellers" id="bestsellers">
+  <div class="container">
+    <div class="section-row">
+      <div class="section-head" style="margin-bottom:0;text-align:left;flex:1;">
+        <span class="eyebrow">Шилдэг Борлуулалттай</span>
+        <h2>Хэрэглэгчдийн Дурлал</h2>
+      </div>
+      <a href="#" class="view-all">Бүгдийг Үзэх
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </a>
+    </div>
+    <div style="height:40px;"></div>
+    <div class="bestseller-grid">
+      <div class="bs-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop" alt="Signature Latte"></div>
+        <div class="name">Сигнатур Латте</div>
+      </div>
+      <div class="bs-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=500&auto=format&fit=crop" alt="Vanilla Cold Brew"></div>
+        <div class="name">Ваниль Хүйтэн Кофе</div>
+      </div>
+      <div class="bs-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?q=80&w=500&auto=format&fit=crop" alt="Pistachio Latte"></div>
+        <div class="name">Писташ Латте</div>
+      </div>
+      <div class="bs-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=500&auto=format&fit=crop" alt="Spanish Latte"></div>
+        <div class="name">Испани Латте</div>
+      </div>
+      <div class="bs-card">
+        <div class="thumb"><img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=500&auto=format&fit=crop" alt="Hazelnut Mocha"></div>
+        <div class="name">Самрын Мока</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="insta-section" id="instagram">
+    <div class="insta-top">
+      <div>
+        <h3>Instagram-аар Биднийг Дагаарай</h3>
+        <div class="handle">@scentofm.coffee</div>
+      </div>
+      <a href="#" class="insta-link">Instagram Үзэх
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </a>
+    </div>
+    <div class="insta-grid">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=300&auto=format&fit=crop" alt="Latte art"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=300&auto=format&fit=crop" alt="Iced coffee drizzle"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=300&auto=format&fit=crop" alt="Boutique interior"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=300&auto=format&fit=crop" alt="Coffee beans"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1442550528053-c431ecb55509?q=80&w=300&auto=format&fit=crop" alt="Espresso machine"></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1607920591413-4ec007e70023?q=80&w=300&auto=format&fit=crop" alt="Gift box"></div>
+    </div>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="top">
+        <div class="circle">M</div>
+        <div>
+          <div class="fname">SCENT OF M</div>
+          <div class="fsub">Дээд зэрэглэлийн кофе бутик</div>
+        </div>
+      </div>
+      <p>Хайраар бэлтгэсэн шилдэг кофеноос таашаал авна уу. Учир нь аяга бүр өөрийн түүхтэй.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="Twitter">TW</a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h5>Шуурхай Холбоосууд</h5>
+      <ul>
+        <li><a href="#">Нүүр</a></li>
+        <li><a href="#story">Бидний Тухай</a></li>
+        <li><a href="#bestsellers">Меню</a></li>
+        <li><a href="#instagram">Зургийн Сан</a></li>
+        <li><a href="#footer">Холбоо Барих</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h5>Үйлчлүүлэгчийн Үйлчилгээ</h5>
+      <ul>
+        <li><a href="#">Түгээмэл Асуултууд</a></li>
+        <li><a href="#">Хүргэлт</a></li>
+        <li><a href="#">Буцаалтын Бодлого</a></li>
+        <li><a href="#">Нууцлалын Бодлого</a></li>
+        <li><a href="#">Үйлчилгээний Нөхцөл</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h5>Дэлгүүрийн Мэдээлэл</h5>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.7-6-10a6 6 0 1 1 12 0c0 4.3-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
+        <span>Улаанбаатар, Монгол</span>
+      </div>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span>+976 1234 5678</span>
+      </div>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M22 6 12 13 2 6"/></svg>
+        <span>info@scentofm.com</span>
+      </div>
+      <div class="contact-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span>Даваа &ndash; Ням: 08:00 &ndash; 22:00</span>
+      </div>
+    </div>
+    <div class="fcol newsletter">
+      <h5>Мэдээллийн Товхимол</h5>
+      <p>Тусгай хямдрал, үнэгүй бэлэг зэрэг мэдээллийг авахын тулд бүртгүүлээрэй.</p>
+      <form class="news-form" onsubmit="return false;">
+        <input type="email" placeholder="Имэйл хаягаа оруулна уу" aria-label="Имэйл хаяг" required>
+        <button type="submit" aria-label="Subscribe">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="copyright">&copy; 2024 Scent of M Кофе Бутик. Бүх эрх хуулиар хамгаалагдсан.</div>
+</footer>
 
 </body>
-</html> 
+</html>
